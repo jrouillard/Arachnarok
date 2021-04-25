@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7335947956134616583}
   - component: {fileID: 7241862133180921599}
   - component: {fileID: 3019915085331046361}
-  - component: {fileID: 9223141616299409761}
   - component: {fileID: 8691365127712665796}
   - component: {fileID: -8161064009172230184}
+  - component: {fileID: 9113654340512147780}
   m_Layer: 20
   m_Name: ProjectileA
   m_TagString: Untagged
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1fc9070fe7ac35c45949d3f1a34b8185, type: 2}
+  - {fileID: 2100000, guid: b2dd7a3666bcdab4692df1ad0d97dcda, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,23 +99,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9223141616299409761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7106536808054768774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2e17c9776775c947bf4e682bc71bc5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 1329845292236604, guid: 9bba9cf244c53c5439505dfc96fdd11c,
-    type: 3}
-  explosionForce: 1
-  explosionRadius: 10
-  trail: 1
 --- !u!96 &8691365127712665796
 TrailRenderer:
   serializedVersion: 2
@@ -137,7 +120,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1fc9070fe7ac35c45949d3f1a34b8185, type: 2}
+  - {fileID: 2100000, guid: b2dd7a3666bcdab4692df1ad0d97dcda, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -240,3 +223,19 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &9113654340512147780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7106536808054768774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0fee4a2bf2f62849b61ab1dae58947f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 0}
+  explosionForce: 10
+  explosionRadius: 1
+  trail: 1
