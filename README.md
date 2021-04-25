@@ -1,2 +1,2 @@
 # Arachnarok
-Gamejam nnity game
+Gamejam unity game
