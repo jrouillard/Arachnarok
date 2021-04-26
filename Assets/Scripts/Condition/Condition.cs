@@ -9,7 +9,7 @@ public class ActionableEvent: UnityEvent<GameObject> {}
 public class Condition : MonoBehaviour
 {
     public List<GameObject> objectives;
-    public UnityEvent success;
+    public ActionableEvent success;
 
     public void ObjectiveComplete(GameObject objective)
     {

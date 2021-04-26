@@ -498,7 +498,7 @@ MonoBehaviour:
   - {fileID: 5883511275471006461}
   - {fileID: 5883511274815931806}
   body: {fileID: 5883511275911502401}
-  bodyHeight: 1.7
+  bodyHeight: 1.4
   turnSpeed: 2
   speed: 5
 --- !u!114 &8478145485709155860
@@ -531,7 +531,7 @@ MonoBehaviour:
   lifePoints: 2
   explosionAsset: {fileID: 4433616569888815865, guid: a43b81e7cf0a607429207b069f949f31, type: 3}
   colorBlinker: {fileID: 8144334987238789582}
-  hitDelay: 0.04
+  hitDelay: 0.1
   OnDeath:
     m_PersistentCalls:
       m_Calls: []

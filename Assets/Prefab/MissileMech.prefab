@@ -629,7 +629,7 @@ MonoBehaviour:
   body: {fileID: 2984650353766849676}
   bodyHeight: 1.7
   turnSpeed: 2
-  speed: 5
+  speed: 3
 --- !u!114 &8349021331462351790
 MonoBehaviour:
   m_ObjectHideFlags: 0
