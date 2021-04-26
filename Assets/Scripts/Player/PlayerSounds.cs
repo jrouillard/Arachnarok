@@ -16,6 +16,7 @@ public class PlayerSounds : MonoBehaviour
     public AudioClip[] clipsLanding; 
     bool soundFlyStarted;
     public float timerStep = 0.3f;
+    public float stepDistance = 1f;
     private float timeSinceLastStep = 0f;
     private Rigidbody rb;
     private Vector3 oldPos;
@@ -51,7 +52,7 @@ public class PlayerSounds : MonoBehaviour
 
     void PlayStepSound()
     {
-        if (rb.velocity.magnitude > 0.5 && (oldPos - transform.position).magnitude > 1 ) {
+        if (rb.velocity.magnitude > 0.5 && (oldPos - transform.position).magnitude > stepDistance ) {
             if (Time.time - timeSinceLastStep > timerStep) {
                 oldPos = transform.position;
                 int rint = (int) Random.Range(0, clipsSteps.Length);
