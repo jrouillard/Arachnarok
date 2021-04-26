@@ -9,7 +9,7 @@ public class ExplosiveSpiderAI : MonoBehaviour
     {
         if (explosionPrefab != null)
         {
-            GameObject explosion = Instantiate(explosionPrefab, position, rotation);
+            GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
             Object.Destroy(explosion, 3f);
         }
     }
