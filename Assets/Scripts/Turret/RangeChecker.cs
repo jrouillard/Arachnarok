@@ -4,56 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class RangeChecker : MonoBehaviour {
-    public List<string> tags;
+    public Transform target;
+    public float range = 120f;
 
-    List<GameObject> targets = new List<GameObject>();
-
-    void OnTriggerEnter(Collider other)
+    public bool IsTargetInRange()
     {
-        bool invalid = true;
-
-        foreach (string tag in tags)
-        {
-            if (other.CompareTag(tag))
-            {
-                invalid = false;
-                break;
-            }
-        }
-
-        if (invalid)
-        {
-            return;
-        }
-
-        targets.Add(other.gameObject);
+        Vector3 offset = target.position - transform.position;
+        return offset.sqrMagnitude  < range * range;
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        foreach (GameObject target in targets)
-        {
-            if (other.gameObject == target)
-            {
-                targets.Remove(other.gameObject);
-                return;
-            }
-        }
-    }
-
-    public List<GameObject> GetValidTargets()
-    {
-        return targets;
-    }
-
-    public bool InRange(GameObject go)
-    {
-        foreach (GameObject target in targets)
-        {
-            if (go == target)
-                return true;
-        }
-
-        return false;
-    }
 }

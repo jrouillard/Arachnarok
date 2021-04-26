@@ -12,8 +12,8 @@ public class SpiderController : MonoBehaviour
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     private Vector3 playerVelocity;
-    public float horizontalSpeed = 40.0f;
-    public float verticalSpeed = 40.0f;
+    public float turnSpeed = 2.0f;
+    public float speed = 5.0f;
     private List<Matrix4x4> restPosition;
     private Vector3 initialScale;
 
@@ -58,7 +58,7 @@ public class SpiderController : MonoBehaviour
 
         List<Vector3> points = new List<Vector3>();
         points.Add(new Vector3(0, 1 - radius * Mathf.Sin(-1.5f), radius - radius * Mathf.Cos(-1.5f)));
-        const float numPoints = 20;
+        const float numPoints = 6;
         Vector3 globalA = new Vector3();
         Vector3 globalB = new Vector3();
         for (int i = 1; i < numPoints; i++) {
@@ -120,10 +120,22 @@ public class SpiderController : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, transform.TransformPoint(position), 0.3f); //transform.TransformPoint(position); 
     }
 
+    public void FaceTarget(Transform target)
+    {
+        Vector3 localTarget = transform.InverseTransformPoint(new Vector3(target.position.x, 0, target.position.z));
+        Vector3 foo = new Vector3(localTarget.x, 0, localTarget.z);
+        Vector3 absoluteFoo = transform.TransformPoint(foo);
+        Quaternion targetRotation = Quaternion.LookRotation(absoluteFoo - transform.position);
+        //float angle = Vector3.SignedAngle(absoluteFoo, transform.position + transform.right, transform.up);
+        //Quaternion bar = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed);
+        transform.Translate(0, 0, Time.deltaTime * speed);
+    }
+
     void UpdatePosition()
     {
-        float translation = Input.GetAxis("Vertical") * verticalSpeed;
-        float rotation = Input.GetAxis("Horizontal") * horizontalSpeed;
+        float translation = Input.GetAxis("Vertical") * speed;
+        float rotation = Input.GetAxis("Horizontal") * turnSpeed;
         translation *= Time.deltaTime;
         rotation *= Time.deltaTime;
         transform.Translate(0, 0, translation);
@@ -159,7 +171,7 @@ public class SpiderController : MonoBehaviour
         {
             bodyHeight += 0.1f;
         }
-        UpdatePosition();
+        //UpdatePosition();
         ComputeObjectives();
         UpdateBody();
     }

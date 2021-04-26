@@ -8,7 +8,7 @@ public class TargetTracker : MonoBehaviour
     public Vector2 extremumX;
     public Vector2 extremumY;
 
-    GameObject target = null;
+    Transform target = null;
     Vector3 lastKnownPosition = Vector3.zero;
     Quaternion lookAtRotation;
 
@@ -18,18 +18,18 @@ public class TargetTracker : MonoBehaviour
     {
         if (target)
         {
-            if (lastKnownPosition != target.transform.position)
+            if (lastKnownPosition != target.position)
             {
-                lastKnownPosition = target.transform.position;
+                lastKnownPosition = target.position;
                 lastKnownPosition.y -= 1f;
-                lookAtRotation = Quaternion.LookRotation(lastKnownPosition - transform.position);
+                lookAtRotation = Quaternion.LookRotation(lastKnownPosition - transform.position, transform.parent.transform.up);
             }
-            float speed = slow ? trackingSpeed / 4f : trackingSpeed;
+            float speed = slow ? trackingSpeed / 3f : trackingSpeed;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, lookAtRotation, speed * Time.deltaTime);
         }
     }
 
-    public void FocusOn(GameObject target)
+    public void FocusOn(Transform target)
     {
         this.target = target;
     }

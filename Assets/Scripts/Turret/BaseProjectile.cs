@@ -7,13 +7,13 @@ public abstract class BaseProjectile : MonoBehaviour {
     public int explosionRadius;
     public int Damage {get; set;}
 
-    public GameObject Target { get; set; }
+    public Transform Target { get; set; }
 
     protected void Explode(Vector3 position, Quaternion rotation)
     {
         if (explosionPrefab){
             GameObject explosion = Instantiate(explosionPrefab, position, rotation);
-            Object.Destroy(explosion, 1.5f);
+            Object.Destroy(explosion, 3f);
         }
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         // foreach (Collider collider in colliders)

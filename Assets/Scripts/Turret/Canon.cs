@@ -7,7 +7,7 @@ public class Canon : MonoBehaviour
     public Transform tip;
     public GameObject muzzleFlash;
     public bool beam;
-    public float shootingDuration;
+    public float shootingDuration = 10.0f;
     public float shootForce;
     public float upwardForce;
 
@@ -24,7 +24,7 @@ public class Canon : MonoBehaviour
         shootingTimer += Time.deltaTime;
     }
 
-    public void Shoot(GameObject projectile, GameObject target)
+    public void Shoot(GameObject projectile, Transform target)
     {
         shootingTimer = 0f;
         GameObject muzzle = Instantiate(muzzleFlash, tip.position, Quaternion.Euler(transform.forward)) as GameObject;
@@ -45,7 +45,7 @@ public class Canon : MonoBehaviour
             }
             Object.Destroy(bullet, shootingDuration);
         }
-        animator.SetTrigger("Shoot");
+        //animator.SetTrigger("Shoot");
     }
 
     public bool isShooting()
