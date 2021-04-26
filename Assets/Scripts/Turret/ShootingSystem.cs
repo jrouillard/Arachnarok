@@ -10,7 +10,7 @@ public class ShootingSystem : MonoBehaviour {
     public List<Canon> canons;
 
     float fireTimer = 0.0f;
-    GameObject target;
+    Transform target;
 
     // Update is called once per frame
     void Update () {
@@ -23,7 +23,7 @@ public class ShootingSystem : MonoBehaviour {
 
         if (fireTimer >= fireRate)
         {
-            float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position));
+            float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(target.position - transform.position));
             if (angle < fieldOfView)
             {
                 fireTimer = 0.0f;
@@ -57,7 +57,7 @@ public class ShootingSystem : MonoBehaviour {
         return false;
     }
 
-    public void SetTarget(GameObject target){
+    public void SetTarget(Transform target){
         this.target = target;
     }
 }

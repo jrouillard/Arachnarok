@@ -15,9 +15,10 @@ public class LegJump
 
     private bool moving = false;
 
-    public void Start(AnimationCurve ac)
+    public void Start(AnimationCurve ac, float duration)
     {
         startAnimationTime = Time.time - 20;
+        animationDuration = duration;
         curve = ac;
     }
 
@@ -67,6 +68,7 @@ public class LegController : MonoBehaviour
     //public UnityEventVector3 groundHit;
 
     // hop control
+    public float hopDuration = 0.2f;
     public float maxDistance;
     public float hopAltitude;
     public Transform objective;
@@ -77,7 +79,7 @@ public class LegController : MonoBehaviour
         globalTarget.transform.SetParent(null);
         globalTarget.transform.position = objective.position;
         hop.maxAltitude = hopAltitude;
-        hop.Start(curve);
+        hop.Start(curve, hopDuration);
     }
 
     void CheckDistance()

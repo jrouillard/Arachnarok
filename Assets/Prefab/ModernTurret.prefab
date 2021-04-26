@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tip: {fileID: 3259262836604584396}
-  muzzleFlash: {fileID: 0}
+  muzzleFlash: {fileID: 8856629437242833163, guid: e1bfe0714c520714198fc045a93b8a56, type: 3}
   beam: 1
   shootingDuration: 3
   shootForce: 0
@@ -196,7 +196,6 @@ GameObject:
   - component: {fileID: 7232248347766824289}
   - component: {fileID: 58187612363175630}
   - component: {fileID: 5486944812115865551}
-  - component: {fileID: 5205006273786854797}
   m_Layer: 0
   m_Name: ModernTurret
   m_TagString: Untagged
@@ -276,21 +275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c928fdf4efb19439d5827be6dd4d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags:
-  - Player
---- !u!135 &5205006273786854797
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2345186799437459912}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 50
-  m_Center: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}
+  range: 120
 --- !u!1 &3564215441518306209
 GameObject:
   m_ObjectHideFlags: 0

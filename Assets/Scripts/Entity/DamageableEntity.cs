@@ -7,7 +7,7 @@ public class DamageableEntity : MonoBehaviour
     public int lifePoints = 2;
     public GameObject explosionAsset;
     public BlinkColor colorBlinker;
-    public float hitDelay = 0.04f;
+    public float hitDelay = 0.1f;
     private bool isHit = false;
     public ActionableEvent OnDeath;
 
@@ -63,13 +63,11 @@ public class DamageableEntity : MonoBehaviour
         Component[] children = gameObject.GetComponentsInChildren(typeof(Transform));
         foreach (Transform child in children)
         {
-            Debug.Log("Child" + child.gameObject.name);
             MeshFilter meshFilter = child.GetComponent<MeshFilter>();
             if (meshFilter != null)
             {
                 if (meshFilter.mesh)
                 {
-                    Debug.Log("With mesh mesh");
                     //Instantiate(myPrefab, new Vector3(0, 0, 0), Quaternion.identity);
                     //GameObject member = Instantiate("RagdollMember", tip.position, Quaternion.Euler(transform.forward)) as GameObject;
                     Rigidbody rb = child.gameObject.AddComponent<Rigidbody>();
@@ -89,7 +87,6 @@ public class DamageableEntity : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enter");
         BaseProjectile projectile = other.GetComponent<BaseProjectile>();
         if (projectile != null && !isHit)
         {
@@ -102,7 +99,6 @@ public class DamageableEntity : MonoBehaviour
             }
             else
             {
-                Debug.Log("death");
                 OnDeath.Invoke(gameObject);
                 StopBlink();
                 PlayExplosion();
