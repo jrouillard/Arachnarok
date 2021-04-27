@@ -2552,7 +2552,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378081394}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3962,6 +3962,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 116256685193132783, guid: aef32d32735f0a14e95b015577e0fbc7, type: 3}
   m_PrefabInstance: {fileID: 215110744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &552941502 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 796003230484125176, guid: 5d2cae124b688344aa8283b0ecfb9d04, type: 3}
+  m_PrefabInstance: {fileID: 1131156942}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &558040189 stripped
 Transform:
@@ -6936,6 +6941,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1097496549}
   - component: {fileID: 1097496548}
+  - component: {fileID: 1097496550}
   m_Layer: 0
   m_Name: SceneFader
   m_TagString: Untagged
@@ -6977,6 +6983,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1097496550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097496547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f51bbdf0da3af4199d6ec3d8ecfadc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1097496548}
 --- !u!4 &1098782179 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7871971553249721350, guid: 2714cd7ac59c2d34fb1b2aeffa55c148, type: 3}
@@ -7337,8 +7356,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1302887620818836067, guid: 5d2cae124b688344aa8283b0ecfb9d04, type: 3}
       propertyPath: lifePoints
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 1302887620818836067, guid: 5d2cae124b688344aa8283b0ecfb9d04, type: 3}
+      propertyPath: sceneFader
+      value: 
+      objectReference: {fileID: 1097496550}
+    - target: {fileID: 1302887620818836067, guid: 5d2cae124b688344aa8283b0ecfb9d04, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 552941502}
     - target: {fileID: 1302887620818836067, guid: 5d2cae124b688344aa8283b0ecfb9d04, type: 3}
       propertyPath: onDamageReceived.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -7406,7 +7433,7 @@ PrefabInstance:
     - target: {fileID: 2817039751576291485, guid: 5d2cae124b688344aa8283b0ecfb9d04, type: 3}
       propertyPath: bullet
       value: 
-      objectReference: {fileID: 7106536808054768774, guid: cd8cd914b135e854f8d49f5aa9a813ee, type: 3}
+      objectReference: {fileID: 566653224220424911, guid: c5e51c4899dc2d8478eea59775e8be7e, type: 3}
     - target: {fileID: 6269059041032399913, guid: 5d2cae124b688344aa8283b0ecfb9d04, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.0000054053958
