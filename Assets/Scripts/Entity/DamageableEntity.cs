@@ -7,8 +7,11 @@ public class DamageableEntity : MonoBehaviour
     public int lifePoints = 2;
     public GameObject explosionAsset;
     public BlinkColor colorBlinker;
+    public SceneFader sceneFader;
+    public Camera playerCamera;
     public float hitDelay = 0.1f;
     private bool isHit = false;
+    private bool dieing = false;
     public ActionableEvent OnDeath;
 
     void InflictDamages(int damages)
@@ -102,10 +105,25 @@ public class DamageableEntity : MonoBehaviour
                 OnDeath.Invoke(gameObject);
                 StopBlink();
                 PlayExplosion();
-                ExplodeChildren();
-                Object.Destroy(gameObject);
+                
+                if (playerCamera == null) {
+                    ExplodeChildren();
+                    Object.Destroy(gameObject);
+                } else  {
+                    KillPlayer();
+                }
             }
             Destroy(other.gameObject);
+        }
+    }
+    void KillPlayer() 
+    {
+        if (!dieing) {
+            dieing = true;
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.constraints = RigidbodyConstraints.None;
+            playerCamera.GetComponent<CameraController>().enabled = false;
+            sceneFader.FadeToLevel("Menu");
         }
     }
 }
