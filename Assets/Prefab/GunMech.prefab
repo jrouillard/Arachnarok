@@ -516,6 +516,9 @@ MonoBehaviour:
   target: {fileID: 0}
   requiredDistance: 10
   controller: {fileID: 5883511275911502404}
+  targetReached:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3997451446463202668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,7 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c345e754b9a2af14ca2d3e1a920139f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePoints: 2
+  lifePoints: 10
   explosionAsset: {fileID: 4433616569888815865, guid: a43b81e7cf0a607429207b069f949f31, type: 3}
   colorBlinker: {fileID: 8144334987238789582}
   hitDelay: 0.1

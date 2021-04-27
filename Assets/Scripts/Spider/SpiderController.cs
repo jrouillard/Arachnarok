@@ -122,10 +122,10 @@ public class SpiderController : MonoBehaviour
 
     public void FaceTarget(Transform target)
     {
-        Vector3 localTarget = transform.InverseTransformPoint(new Vector3(target.position.x, 0, target.position.z));
+        Vector3 localTarget = transform.InverseTransformPoint(new Vector3(target.position.x, target.position.y, target.position.z));
         Vector3 foo = new Vector3(localTarget.x, 0, localTarget.z);
         Vector3 absoluteFoo = transform.TransformPoint(foo);
-        Quaternion targetRotation = Quaternion.LookRotation(absoluteFoo - transform.position);
+        Quaternion targetRotation = Quaternion.LookRotation(absoluteFoo - transform.position, transform.up);
         //float angle = Vector3.SignedAngle(absoluteFoo, transform.position + transform.right, transform.up);
         //Quaternion bar = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed);

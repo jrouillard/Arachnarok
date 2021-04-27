@@ -5074,7 +5074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 4433616569888815865, guid: a43b81e7cf0a607429207b069f949f31, type: 3}
-  explosionForce: 10
+  explosionForce: 200
   explosionRadius: 5
   turnSpeed: 4
   speed: 70
