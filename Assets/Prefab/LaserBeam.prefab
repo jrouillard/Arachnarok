@@ -14355,9 +14355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f522eec039a87294a8d75e12c6636833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 0}
-  explosionForce: 0
-  explosionRadius: 0
+  explosionPrefab: {fileID: 4433616569888815865, guid: a43b81e7cf0a607429207b069f949f31, type: 3}
+  explosionForce: 20
+  explosionRadius: 5
   beamLength: 0.5
   speed: 200
   laser: {fileID: 5098466539397784947}

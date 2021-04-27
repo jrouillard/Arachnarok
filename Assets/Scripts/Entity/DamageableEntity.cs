@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class DamageReceivedEvent: UnityEvent<float> {}
 
 public class DamageableEntity : MonoBehaviour
 {
@@ -12,11 +16,37 @@ public class DamageableEntity : MonoBehaviour
     public float hitDelay = 0.1f;
     private bool isHit = false;
     private bool dieing = false;
-    public ActionableEvent OnDeath;
+    public ActionableEvent onDeath;
+    public DamageReceivedEvent onDamageReceived;
+    private float maxLife;
 
-    void InflictDamages(int damages)
+    private void Start()
     {
-        lifePoints -= 1;
+        maxLife = lifePoints;
+    }
+
+    public void InflictDamages(int damages)
+    {
+        onDamageReceived.Invoke(damages / 10);
+        lifePoints -= damages;
+        if (IsAlive())
+        {
+            Blink();
+            isHit = true;
+            StartCoroutine(AllowHit(hitDelay));
+        }
+        else
+        {
+            onDeath.Invoke(gameObject);
+            StopBlink();
+            PlayExplosion();
+            if (playerCamera == null) {
+                ExplodeChildren();
+                Object.Destroy(gameObject);
+            } else  {
+                KillPlayer();
+            }
+        }
     }
 
     private void Blink()
@@ -94,26 +124,6 @@ public class DamageableEntity : MonoBehaviour
         if (projectile != null && !isHit)
         {
             InflictDamages(projectile.Damage);
-            if (IsAlive())
-            {
-                Blink();
-                isHit = true;
-                StartCoroutine(AllowHit(hitDelay));
-            }
-            else
-            {
-                OnDeath.Invoke(gameObject);
-                StopBlink();
-                PlayExplosion();
-                
-                if (playerCamera == null) {
-                    ExplodeChildren();
-                    Object.Destroy(gameObject);
-                } else  {
-                    KillPlayer();
-                }
-            }
-            Destroy(other.gameObject);
         }
     }
     void KillPlayer() 

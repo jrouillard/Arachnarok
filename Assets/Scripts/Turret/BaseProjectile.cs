@@ -15,19 +15,5 @@ public abstract class BaseProjectile : MonoBehaviour {
             GameObject explosion = Instantiate(explosionPrefab, position, rotation);
             Object.Destroy(explosion, 3f);
         }
-        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
-        // foreach (Collider collider in colliders)
-        // {
-        //     Rigidbody rb = collider.GetComponent<Rigidbody>();
-        //     if (rb != null)
-        //     {
-        //         rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
-        //     }
-        //     // DamageableEntity entity = collider.GetComponent<DamageableEntity>();
-        //     // if (entity != null)
-        //     // {
-        //     //     entity.inflictDamage(Damage);
-        //     // }
-        // }
     }
 }
