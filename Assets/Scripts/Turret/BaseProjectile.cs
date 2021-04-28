@@ -14,15 +14,21 @@ public abstract class BaseProjectile : MonoBehaviour {
     {
         this.ignore = ignore;
     }
+
     protected void Explode(Vector3 position, Quaternion rotation)
     {
         Destroy(GetComponent<Rigidbody>());
-        GetComponent<SphereCollider>().enabled = false;
+        SphereCollider collider = GetComponent<SphereCollider>();
+        if (collider != null)
+        {
+            collider.enabled = false;
+        }
+
         if (explosionPrefab)
         {
             GameObject explosion = Instantiate(explosionPrefab, position, rotation);
 
-            if (ignore) 
+            if (ignore)
             {
                 explosion.GetComponent<Explosion>().SetIgnore(ignore);
             }

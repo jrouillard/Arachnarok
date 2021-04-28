@@ -19,6 +19,7 @@ public class DamageableEntity : MonoBehaviour
     public ActionableEvent onDeath;
     public DamageReceivedEvent onDamageReceived;
     public float maxLife;
+    public bool invincible;
 
     private void Start()
     {
@@ -27,25 +28,33 @@ public class DamageableEntity : MonoBehaviour
 
     public void InflictDamages(int damages)
     {
-        onDamageReceived.Invoke(damages / 10f);
-        lifePoints -= damages;
-        if (IsAlive())
+        if (!invincible)
         {
-            Blink();
-            isHit = true;
-            StartCoroutine(AllowHit(hitDelay));
-        }
-        else
-        {
-            onDeath.Invoke(gameObject);
-            StopBlink();
-            PlayExplosion();
-            if (playerCamera == null) {
-                ExplodeChildren();
-                Object.Destroy(gameObject);
-            } else  {
-                KillPlayer();
+            onDamageReceived.Invoke(damages / 10f);
+            lifePoints -= damages;
+            if (IsAlive())
+            {
+                Blink();
+                isHit = true;
+                StartCoroutine(AllowHit(hitDelay));
             }
+            else
+            {
+                Kill();
+            }
+        }
+    }
+
+    public void Kill()
+    {
+        onDeath.Invoke(gameObject);
+        StopBlink();
+        PlayExplosion();
+        if (playerCamera == null) {
+            ExplodeChildren();
+            Object.Destroy(gameObject);
+        } else  {
+            KillPlayer();
         }
     }
 
@@ -101,6 +110,11 @@ public class DamageableEntity : MonoBehaviour
             {
                 if (meshFilter.mesh)
                 {
+                    MeshCollider collider = child.GetComponent<MeshCollider>();
+                    if (collider != null)
+                    {
+                        collider.convex = true;
+                    }
                     //Instantiate(myPrefab, new Vector3(0, 0, 0), Quaternion.identity);
                     //GameObject member = Instantiate("RagdollMember", tip.position, Quaternion.Euler(transform.forward)) as GameObject;
                     Rigidbody rb = child.gameObject.AddComponent<Rigidbody>();
@@ -120,14 +134,16 @@ public class DamageableEntity : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("hit");
-        BaseProjectile projectile = other.GetComponent<BaseProjectile>();
-        if (projectile != null && !isHit)
-        {
-            InflictDamages(projectile.Damage);
+        if (!invincible) {
+            BaseProjectile projectile = other.GetComponent<BaseProjectile>();
+            if (projectile != null && !isHit)
+            {
+                InflictDamages(projectile.Damage);
+            }
         }
     }
-    void KillPlayer() 
+
+    void KillPlayer()
     {
         if (!dieing) {
             dieing = true;

@@ -203,11 +203,11 @@ public class GrapplingGun : MonoBehaviour {
         grappling = true;
         Vector3 direction = targetPoint - gunTip.position;
         grapplePoint = hook.transform.position;
-        Rigidbody hook_rb = hook.gameObject.AddComponent<Rigidbody>() as Rigidbody; 
+        Rigidbody hook_rb = hook.gameObject.AddComponent<Rigidbody>() as Rigidbody;
         // Add the rigidbody.
         // hook_rb.isKinematic = false;
         hook_rb.interpolation = RigidbodyInterpolation.Interpolate;
-        hook_rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        hook_rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         hook_rb.useGravity = true;
         localPoint = hook.transform.InverseTransformPoint(grapplePoint);
         stuckTo = hook.transform.transform;
