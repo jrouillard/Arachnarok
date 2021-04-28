@@ -8,12 +8,17 @@ public class Explosion : MonoBehaviour
     public float explosionForce = 1000f;
     public float lifetime = 3f;
     public int damage = 5;
-
+    Collider ignore;
     void Start()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         foreach (Collider collider in colliders)
         {
+            Debug.Log(ignore == null);
+            if (ignore && ignore == collider)
+            {
+                continue;
+            }
             Rigidbody rb = collider.GetComponent<Rigidbody>();
             if (rb != null)
             {
@@ -28,5 +33,9 @@ public class Explosion : MonoBehaviour
             }
         }
         Object.Destroy(gameObject, lifetime);
+    }
+    public void SetIgnore(Collider ignore) 
+    {
+        this.ignore = ignore;
     }
 }

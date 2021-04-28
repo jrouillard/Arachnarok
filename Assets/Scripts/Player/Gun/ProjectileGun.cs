@@ -30,7 +30,7 @@ public class ProjectileGun : MonoBehaviour
 
     public int TTL;
     //Recoil
-    public Rigidbody playerRb;
+    public GameObject player;
     public float recoilForce;
 
     //bools
@@ -93,7 +93,7 @@ public class ProjectileGun : MonoBehaviour
     private void Shoot()
     {
         readyToShoot = false;
-        Vector3 pos = attackPoint.position + playerRb.velocity * Time.deltaTime;
+        Vector3 pos = attackPoint.position + player.GetComponent<Rigidbody>().velocity * Time.deltaTime;
         //Find the exact hit position using a raycast
         Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); //Just a ray through the middle of your current view
         RaycastHit hit;
@@ -117,6 +117,11 @@ public class ProjectileGun : MonoBehaviour
 
         //Instantiate bullet/projectile
         GameObject currentBullet = Instantiate(bullet, pos, Quaternion.identity); //store instantiated bullet in currentBullet
+        BaseProjectile baseProjectile = currentBullet.GetComponent<BaseProjectile>();
+        if (baseProjectile != null)
+        {
+            baseProjectile.SetIgnore(player.GetComponent<Collider>());
+        }
         //Rotate bullet to shoot direction
         currentBullet.transform.forward = directionWithSpread.normalized;
         currentBullet.transform.Rotate(90, 0, 0, Space.Self);
@@ -146,7 +151,7 @@ public class ProjectileGun : MonoBehaviour
             allowInvoke = false;
 
             //Add recoil to player (should only be called once)
-            playerRb.AddForce(-directionWithSpread.normalized * recoilForce, ForceMode.Impulse);
+            player.GetComponent<Rigidbody>().AddForce(-directionWithSpread.normalized * recoilForce, ForceMode.Impulse);
         }
 
     }

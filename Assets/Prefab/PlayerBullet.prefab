@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566653224220424911}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -97,7 +97,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &566653224220424896
 MonoBehaviour:
@@ -112,6 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 8856629437242833163, guid: e1bfe0714c520714198fc045a93b8a56, type: 3}
+  explosionForce: 0
+  explosionRadius: 0
+  explosionPrefab: {fileID: 8856629437242833163, guid: e1bfe0714c520714198fc045a93b8a56, type: 3}
 --- !u!54 &566653224220424900
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -123,11 +126,11 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!96 &727614054564399576
 TrailRenderer:
   serializedVersion: 2

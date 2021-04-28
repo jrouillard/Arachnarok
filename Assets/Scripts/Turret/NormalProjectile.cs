@@ -18,6 +18,7 @@ public class NormalProjectile : BaseProjectile {
 
     void OnCollisionEnter(Collision other)
     {
+        Debug.Log("test");
         ContactPoint contact = other.contacts[0];
         Quaternion rotation = Quaternion.FromToRotation(Vector3.up, contact.normal);
         Vector3 position = contact.point;
