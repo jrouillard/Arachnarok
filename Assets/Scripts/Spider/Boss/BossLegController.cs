@@ -13,6 +13,7 @@ public class BossLegJump
     private float maxAltitude;
     private AnimationCurve curve;
     private bool moving = false;
+    public UnityEventVector3 groundHit;
 
     public void Start(AnimationCurve ac, float altitude, float duration)
     {
@@ -63,7 +64,7 @@ public class BossLegController : MonoBehaviour
     public AnimationCurve curve;
     private Vector3 target;
 
-    //public UnityEventVector3 groundHit;
+    public UnityEventVector3 groundHit;
 
     // hop control
     public float hopDuration = 0.2f;
@@ -97,7 +98,7 @@ public class BossLegController : MonoBehaviour
             target = hop.ComputePosition(transform);
             if (!hop.isMoving())
             {
-                //groundHit.Invoke(target);
+                groundHit.Invoke(target);
             }
         }
     }
