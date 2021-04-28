@@ -94,7 +94,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6793124475366464436, guid: a486d233749269349aa51a7ec99d346d, type: 3}
 --- !u!1 &48358712297898932
@@ -191,7 +191,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6793124475366464436, guid: a486d233749269349aa51a7ec99d346d, type: 3}
 --- !u!1 &283006740006556944
@@ -288,7 +288,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6964662782098942408, guid: a486d233749269349aa51a7ec99d346d, type: 3}
 --- !u!1 &785239077665559985
@@ -436,7 +436,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8866003638636109797, guid: a486d233749269349aa51a7ec99d346d, type: 3}
 --- !u!1 &4998203996614880474
@@ -533,7 +533,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -9165743305363368106, guid: a486d233749269349aa51a7ec99d346d, type: 3}
 --- !u!1 &5428092323945724872
@@ -630,7 +630,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6130417711645707251, guid: a486d233749269349aa51a7ec99d346d, type: 3}
 --- !u!1 &6209528152722844942
@@ -694,6 +694,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4495536324087602531}
   - component: {fileID: 3716431470849416084}
+  - component: {fileID: 469498816212299680}
+  - component: {fileID: 6801784755108930752}
   m_Layer: 0
   m_Name: Hearth
   m_TagString: Untagged
@@ -741,6 +743,46 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &469498816212299680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8740736209475761791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c345e754b9a2af14ca2d3e1a920139f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifePoints: 20
+  explosionAsset: {fileID: 5704820035983880959, guid: da5e9f652c3fa854ab04b9ede1b54d9b, type: 3}
+  colorBlinker: {fileID: 6801784755108930752}
+  sceneFader: {fileID: 0}
+  playerCamera: {fileID: 0}
+  hitDelay: 0.1
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamageReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  maxLife: 0
+  invicible: 0
+--- !u!114 &6801784755108930752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8740736209475761791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552dedbdedab4c14fb53f533e8426aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkMaterial: {fileID: 2100000, guid: ff4a8c0d0a301ef46b38e6268355a494, type: 2}
+  useEmission: 1
 --- !u!1 &9083751324429470221
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +877,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3613567641014311022, guid: a486d233749269349aa51a7ec99d346d, type: 3}

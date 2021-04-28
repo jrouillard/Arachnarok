@@ -5,26 +5,47 @@ using UnityEngine.Events;
 
 public class BossAI : MonoBehaviour
 {
-    public Transform target;
     public int requiredDistance;
     private BossController controller;
-    public UnityEvent targetReached;
+    MultipleTargetRangeChecker rangeCheker;
 
     void Start()
     {
         controller = GetComponent<BossController>();
+        rangeCheker = GetComponent<MultipleTargetRangeChecker>();
     }
 
     void Update()
     {
-        Vector3 offset = transform.position - target.position;
-        if (offset.sqrMagnitude > requiredDistance * requiredDistance)
+        TargetNearest();
+    }
+
+    void TargetNearest()
+    {
+        List<Transform> validTargets = rangeCheker.GetValidTargets();
+
+        Transform curTarget = null;
+        float closestDist = 0.0f;
+
+        for(int i = 0; i < validTargets.Count; i++)
         {
-            controller.FaceTarget(target);
+            if (validTargets[i] != null) {
+                float dist = Vector3.Distance(transform.position, validTargets[i].position);
+
+                if(!curTarget || dist < closestDist)
+                {
+                    curTarget = validTargets[i];
+                    closestDist = dist;
+                }
+            }
         }
-        else if (targetReached != null)
+        if (curTarget != null)
         {
-            targetReached.Invoke();
+            Vector3 offset = transform.position - curTarget.position;
+            if (offset.sqrMagnitude > requiredDistance * requiredDistance)
+            {
+                controller.FaceTarget(curTarget);
+            }
         }
     }
 }

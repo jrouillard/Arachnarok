@@ -15,7 +15,6 @@ public class Level : MonoBehaviour
 
 
     public GameObject[] mechPrefabs;
-    public Text infos;
     public GameObject bigMechPrefab;
     public Transform[] spawns;
     public Transform[] mediumSpawns;

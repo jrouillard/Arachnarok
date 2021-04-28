@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2957413562356106325}
   - component: {fileID: 2957413562356106324}
   - component: {fileID: 2957413562356106327}
+  - component: {fileID: 1855667474471154189}
   m_Layer: 8
   m_Name: buildin8
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +99,31 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5928785198427282456, guid: 6d6787f307fae71489b96db8a2cf8eec, type: 3}
+--- !u!114 &1855667474471154189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2957413562356106326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c345e754b9a2af14ca2d3e1a920139f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifePoints: 100
+  explosionAsset: {fileID: 0}
+  colorBlinker: {fileID: 0}
+  sceneFader: {fileID: 0}
+  playerCamera: {fileID: 0}
+  hitDelay: 0.1
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamageReceived:
+    m_PersistentCalls:
+      m_Calls: []
+  maxLife: 0
 --- !u!1 &4385193214183235801
 GameObject:
   m_ObjectHideFlags: 0

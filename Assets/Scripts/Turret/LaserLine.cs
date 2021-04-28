@@ -14,7 +14,8 @@ public class LaserLine : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance))
+        int layerMask = ~(1 << 6);
+        if (Physics.Raycast(transform.position, transform.forward, out hit, maxDistance, layerMask))
         {
             CastTo(transform.InverseTransformPoint(hit.point));
             if (!impact.isEmitting)

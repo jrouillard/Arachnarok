@@ -5,7 +5,7 @@ using UnityEngine;
 public class MechSettings : MonoBehaviour
 {
     // Start is called before the first frame update
-    public RangeChecker[] rangeCheckers;
+    public SingleTargetRangeChecker[] rangeCheckers;
     public SpiderAI spiderAi;
     public Vector3 offset;
 
@@ -17,7 +17,7 @@ public class MechSettings : MonoBehaviour
         {
             spiderAi.enabled = false;
         }
-        foreach(RangeChecker rangeChecker in rangeCheckers) 
+        foreach(SingleTargetRangeChecker rangeChecker in rangeCheckers) 
         {
             if (!rangeChecker.target)
             {
@@ -27,7 +27,7 @@ public class MechSettings : MonoBehaviour
     }
     public void SetTarget(Transform target)
     {
-        foreach(RangeChecker rangeChecker in rangeCheckers) 
+        foreach(SingleTargetRangeChecker rangeChecker in rangeCheckers) 
         {
             rangeChecker.target = target;
             rangeChecker.enabled = true;

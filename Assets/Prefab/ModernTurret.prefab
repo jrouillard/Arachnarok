@@ -234,7 +234,7 @@ MonoBehaviour:
   fireRate: 5
   damage: 0
   fieldOfView: 40
-  projectile: {fileID: 7132407377975133028, guid: c35cbe854936929478eeb3fe20720f7f, type: 3}
+  projectile: {fileID: 8681372406817221184, guid: 1bdcbaf658835de42b2f9632266feda7, type: 3}
   canons:
   - {fileID: 1662559718728883198}
 --- !u!114 &7232248347766824289

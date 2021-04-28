@@ -6,13 +6,13 @@ public class TurretAI : MonoBehaviour
 {
     TargetTracker tracker;
     ShootingSystem shooter;
-    RangeChecker rangeCheker;
+    SingleTargetRangeChecker rangeCheker;
 
     void Start()
     {
         tracker = GetComponent<TargetTracker>();
         shooter = GetComponent<ShootingSystem>();
-        rangeCheker = GetComponent<RangeChecker>();
+        rangeCheker = GetComponent<SingleTargetRangeChecker>();
     }
 
     void Update()

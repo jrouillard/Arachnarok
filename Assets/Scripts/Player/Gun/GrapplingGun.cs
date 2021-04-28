@@ -223,7 +223,7 @@ public class GrapplingGun : MonoBehaviour {
         RaycastHit hit;
         
         Ray ray = new Ray(maincamera.transform.position, maincamera.transform.forward);
-        if (Physics.Raycast(ray, out hit, maxDistance, ~(1<<11))) {
+        if (Physics.Raycast(ray, out hit, maxDistance, ~(1<<11 | 1<<6))) {
             return hit.point;
         } else {
             return ray.GetPoint(75);
