@@ -11,9 +11,12 @@ public class TrackingProjectile : BaseProjectile {
     void Update()
     {
         Rigidbody body = GetComponent<Rigidbody>();
-        body.velocity = transform.forward * speed;
-        Quaternion targetRotation = Quaternion.LookRotation(Target.position - transform.position);
-        body.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed));
+        if (body)
+        {
+            body.velocity = transform.forward * speed;
+            Quaternion targetRotation = Quaternion.LookRotation(Target.position - transform.position);
+            body.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed));
+        }
     }
 
     void OnCollisionEnter(Collision other)

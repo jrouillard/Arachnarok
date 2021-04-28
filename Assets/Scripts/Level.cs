@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Level : MonoBehaviour
 
 
     public GameObject[] mechPrefabs;
+    public Text infos;
     public GameObject bigMechPrefab;
     public Transform[] spawns;
     public Transform[] mediumSpawns;
@@ -28,6 +30,7 @@ public class Level : MonoBehaviour
         GoToPhase(0);
     }
 
+    int counter = 0;
     public void GoToPhase(int phase) 
     { 
         missionWayPoint.ClearTargets();
@@ -102,11 +105,10 @@ public class Level : MonoBehaviour
     }
     void CheckAliveMech() 
     {
-        foreach(GameObject mech in aliveMechs) 
-        {   
-            if (!mech.GetComponent<MechSettings>().IsAlive()) 
+        for (int n = aliveMechs.Count - 1; n >= 0 ; n--) {
+            if (!aliveMechs[n].GetComponent<MechSettings>().IsAlive())
             {
-                aliveMechs.Remove(mech);
+                aliveMechs.RemoveAt(n);
             }
         }
     }
@@ -118,7 +120,12 @@ public class Level : MonoBehaviour
             case 0:
                 break;
             case 1:
-                if (aliveMechs.Count <= 3)
+            
+                if (aliveMechs.Count <= 3 && counter >= 3)
+                {
+                    SpawnSimple();
+                    counter++;
+                } else if (aliveMechs.Count <= 3 && counter >= 3)
                 {
                     GoToPhase(2);
                 }

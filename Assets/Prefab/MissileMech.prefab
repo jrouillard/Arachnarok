@@ -66,7 +66,7 @@ MonoBehaviour:
   rangeCheckers:
   - {fileID: 2057970009243422508}
   spiderAi: {fileID: 8349021331462351790}
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 1.8, z: 0}
   damaged: {fileID: 3701610915505661354}
 --- !u!1 &2984650351896910899
 GameObject:
