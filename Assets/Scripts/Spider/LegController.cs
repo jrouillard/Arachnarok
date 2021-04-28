@@ -225,7 +225,7 @@ public class LegController : MonoBehaviour
     void LateUpdate()
     {
         Transform currentTransform = GetComponent<Transform>();
-        if (!currentTransform || !globalTarget) 
+        if (!currentTransform || !globalTarget || !objective) 
         {
             return;
         }
