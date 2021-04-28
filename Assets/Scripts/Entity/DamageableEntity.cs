@@ -18,7 +18,7 @@ public class DamageableEntity : MonoBehaviour
     private bool dieing = false;
     public ActionableEvent onDeath;
     public DamageReceivedEvent onDamageReceived;
-    private float maxLife;
+    public float maxLife;
 
     private void Start()
     {
@@ -27,7 +27,7 @@ public class DamageableEntity : MonoBehaviour
 
     public void InflictDamages(int damages)
     {
-        onDamageReceived.Invoke(damages / 10);
+        onDamageReceived.Invoke(damages / 10f);
         lifePoints -= damages;
         if (IsAlive())
         {
