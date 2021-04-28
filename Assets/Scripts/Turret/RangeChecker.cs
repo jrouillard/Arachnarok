@@ -9,6 +9,10 @@ public class RangeChecker : MonoBehaviour {
 
     public bool IsTargetInRange()
     {
+        if (!target) 
+        {
+            return false;
+        }
         Vector3 offset = target.position - transform.position;
         return offset.sqrMagnitude  < range * range;
     }

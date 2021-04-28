@@ -13,7 +13,6 @@ public class Canon : MonoBehaviour
 
     private Animator animator;
     private float shootingTimer = 0.0f;
-
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
@@ -23,7 +22,7 @@ public class Canon : MonoBehaviour
     {
         shootingTimer += Time.deltaTime;
     }
-
+    
     public void Shoot(GameObject projectile, Transform target)
     {
         shootingTimer = 0f;
@@ -34,6 +33,10 @@ public class Canon : MonoBehaviour
         {
             bullet.transform.forward = transform.forward;
             BaseProjectile baseProjectile = bullet.GetComponent<BaseProjectile>();
+            if (baseProjectile != null)
+            {
+                baseProjectile.SetIgnore(transform.parent.gameObject);
+            }
             baseProjectile.Target = target;
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             if (rb != null) {

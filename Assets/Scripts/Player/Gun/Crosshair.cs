@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 
 public class Crosshair : MonoBehaviour {
-    public GameObject cross;
+    public Image cross;
     
     public Transform maincamera;
     private RaycastHit hit;
@@ -19,10 +19,10 @@ public class Crosshair : MonoBehaviour {
     void Update() {
         RaycastHit hit;
         if (Physics.Raycast(maincamera.position, maincamera.forward, out hit, gun.maxDistance, 1<<8)) {
-            cross.GetComponent<Image>().material.SetColor("_Color", Color.green);
+            cross.color = Color.green;
             distanceUI.GetComponent<Text>().text = hit.distance.ToString("0") + "m";
         } else {
-            cross.GetComponent<Image>().material.SetColor("_Color", Color.white);
+            cross.color = Color.white;
             distanceUI.GetComponent<Text>().text = "--m";
         }
     }

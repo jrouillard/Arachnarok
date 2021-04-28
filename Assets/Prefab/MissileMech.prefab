@@ -22,6 +22,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2479682780768013030}
+  - component: {fileID: 4161899723024678625}
   m_Layer: 6
   m_Name: MissileMech
   m_TagString: Untagged
@@ -50,6 +51,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4161899723024678625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2479682780768013034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d93fcdb1344c33428c9a67e35197760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeCheckers:
+  - {fileID: 2057970009243422508}
+  spiderAi: {fileID: 8349021331462351790}
+  offset: {x: 0, y: 0, z: 0}
+  damaged: {fileID: 3701610915505661354}
 --- !u!1 &2984650351896910899
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,10 +352,23 @@ MonoBehaviour:
   hitDelay: 0.1
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4161899723024678625}
+        m_TargetAssemblyTypeName: MechSettings, Assembly-CSharp
+        m_MethodName: Clean
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDamageReceived:
     m_PersistentCalls:
       m_Calls: []
+  maxLife: 0
 --- !u!114 &3955710837603229683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,6 +1161,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49183dc7d82274f418b5a9cf88a2f584, type: 3}
+--- !u!114 &2057970009243422508 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5180796346266644160, guid: 49183dc7d82274f418b5a9cf88a2f584, type: 3}
+  m_PrefabInstance: {fileID: 6587220350881358316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c928fdf4efb19439d5827be6dd4d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7936861921859790160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3841543956232340668, guid: 49183dc7d82274f418b5a9cf88a2f584, type: 3}

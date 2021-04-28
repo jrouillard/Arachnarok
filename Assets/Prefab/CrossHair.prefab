@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143feeb932492d943b1a57d58d716a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cross: {fileID: 7789231269830315588}
+  cross: {fileID: 7789231269830315590}
   maincamera: {fileID: 0}
   gun: {fileID: 0}
   distanceUI: {fileID: 7789231270461119888}
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 7789231270332575199}
   - component: {fileID: 7789231270332575198}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CrossHair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

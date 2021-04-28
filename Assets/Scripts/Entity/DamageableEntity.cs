@@ -77,7 +77,7 @@ public class DamageableEntity : MonoBehaviour
         }
     }
 
-    private bool IsAlive()
+    public bool IsAlive()
     {
         return lifePoints > 0;
     }
@@ -120,6 +120,7 @@ public class DamageableEntity : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("hit");
         BaseProjectile projectile = other.GetComponent<BaseProjectile>();
         if (projectile != null && !isHit)
         {

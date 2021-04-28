@@ -160,13 +160,28 @@ MonoBehaviour:
   lifePoints: 10
   explosionAsset: {fileID: 3031333735403842698, guid: cdf9f3727d4be2243b53348a57ce8b56, type: 3}
   colorBlinker: {fileID: 6576867121229938498}
+  sceneFader: {fileID: 0}
+  playerCamera: {fileID: 0}
   hitDelay: 0.1
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3513885658362785765}
+        m_TargetAssemblyTypeName: MechSettings, Assembly-CSharp
+        m_MethodName: Clean
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDamageReceived:
     m_PersistentCalls:
       m_Calls: []
+  maxLife: 0
 --- !u!114 &6576867121229938498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +248,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8914650874408814557}
+  - component: {fileID: 3513885658362785765}
   m_Layer: 6
   m_Name: ExplosiveMech
   m_TagString: Untagged
@@ -263,6 +279,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3513885658362785765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8914650874408814545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d93fcdb1344c33428c9a67e35197760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeCheckers: []
+  spiderAi: {fileID: 5870329163503538375}
+  offset: {x: 0, y: 0, z: 0}
+  damaged: {fileID: 9117260450573224525}
 --- !u!1 &8914650874852474909
 GameObject:
   m_ObjectHideFlags: 0
