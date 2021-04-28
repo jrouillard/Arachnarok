@@ -225,6 +225,10 @@ public class LegController : MonoBehaviour
     void LateUpdate()
     {
         Transform currentTransform = GetComponent<Transform>();
+        if (!currentTransform || !globalTarget) 
+        {
+            return;
+        }
         Vector3 localTarget = currentTransform.InverseTransformPoint(globalTarget.transform.position);
         UpdateShoulder(currentTransform, localTarget);
         UpdateIK(currentTransform, localTarget);

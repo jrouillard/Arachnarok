@@ -24,6 +24,11 @@ public class Target : MonoBehaviour
     {
         this.target = target;
     }
+
+    public void Clear(Transform target) 
+    {
+        Destroy(img);
+    }
     public void SetCanvas(Canvas canvas) 
     {
         transform.SetParent(canvas.transform);

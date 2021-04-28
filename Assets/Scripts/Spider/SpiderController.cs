@@ -91,6 +91,10 @@ public class SpiderController : MonoBehaviour
 
         for(int i = 1; i < objectives.Count; i++)
         {
+            if (objectives[i] == null) 
+            {
+                return;
+            }
             point = objectives[i].position;
             avgSurfaceDist += transform.InverseTransformPoint(point).y;
             a = (transform.position - point).normalized;
@@ -146,6 +150,10 @@ public class SpiderController : MonoBehaviour
     {
         for (int i = 0; i < objectives.Count; i++)
         {
+            if (objectives[i] == null) 
+            {
+                return;
+            }
             RaycastHit? hit = FindClosestPoint(restPosition[i], 2.5f);
             if (hit != null)
             {

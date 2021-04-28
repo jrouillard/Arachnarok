@@ -28,14 +28,12 @@ public class Explosion : MonoBehaviour
             Rigidbody rb = collider.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                Debug.Log("Add force");
                 rb.AddExplosionForce(explosionForce, transform.position, radius, 0f, ForceMode.Impulse);
             }
             DamageableEntity entity = collider.GetComponent<DamageableEntity>();
             if (entity != null)
             {
                 entity.InflictDamages(damage);
-                Debug.Log("Explosion damage");
             }
         }
         Object.Destroy(gameObject, lifetime);

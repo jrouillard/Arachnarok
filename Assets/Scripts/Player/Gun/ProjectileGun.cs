@@ -164,7 +164,6 @@ public class ProjectileGun : MonoBehaviour
 
     private void Reload()
     {
-        Debug.Log("reload");
         reloading = true;
         animator.SetTrigger("Reload");
         Invoke("ReloadFinished", reloadTime); //Invoke ReloadFinished function with your reloadTime as delay

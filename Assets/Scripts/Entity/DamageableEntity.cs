@@ -117,11 +117,17 @@ public class DamageableEntity : MonoBehaviour
                     }
                     //Instantiate(myPrefab, new Vector3(0, 0, 0), Quaternion.identity);
                     //GameObject member = Instantiate("RagdollMember", tip.position, Quaternion.Euler(transform.forward)) as GameObject;
-                    Rigidbody rb = child.gameObject.AddComponent<Rigidbody>();
                     child.SetParent(null);
-                    rb.mass = 5;
-                    rb.AddForce(child.transform.forward * 4000f);
-                    Destroy(child.gameObject, 6f);
+                    if (child.gameObject != null) 
+                    {
+                        Rigidbody rb = child.gameObject.GetComponent<Rigidbody>();
+                        if (!rb) {
+                            rb = child.gameObject.AddComponent<Rigidbody>();
+                            rb.mass = 5;
+                            rb.AddForce(child.transform.forward * 4000f);
+                        }
+                        Destroy(child.gameObject, 6f);
+                    }
                 }
             }
         }

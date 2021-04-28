@@ -20,7 +20,7 @@ public class MissionWaypoint : MonoBehaviour
     public void ClearTargets()
     {
         foreach (Target target in targets) {
-            Destroy(target);
+            Destroy(target.gameObject);
         }
         targets.Clear();
     }
