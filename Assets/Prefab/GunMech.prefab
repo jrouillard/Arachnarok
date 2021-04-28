@@ -305,6 +305,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   maxLife: 0
+  invincible: 0
 --- !u!114 &8144334987238789582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1441,7 +1442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8869479021828753809, guid: a158980272a199940859d84891d23667, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.979
+      value: -0.197
       objectReference: {fileID: 0}
     - target: {fileID: 8869479021828753809, guid: a158980272a199940859d84891d23667, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1449,7 +1450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8869479021828753809, guid: a158980272a199940859d84891d23667, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.068
+      value: 0.844
       objectReference: {fileID: 0}
     - target: {fileID: 8869479021828753809, guid: a158980272a199940859d84891d23667, type: 3}
       propertyPath: m_LocalRotation.w

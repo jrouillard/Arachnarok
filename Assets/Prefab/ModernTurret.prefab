@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  range: 120
+  range: 60
 --- !u!65 &4001754585524009413
 BoxCollider:
   m_ObjectHideFlags: 0

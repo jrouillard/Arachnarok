@@ -54,11 +54,10 @@ public class BossController : MonoBehaviour
     {
         int layerMask = (1 << 8);
         RaycastHit hit;
-        const float distance = 40;
 
         List<Vector3> points = new List<Vector3>();
         points.Add(new Vector3(0, 1 - radius * Mathf.Sin(-1.5f), radius - radius * Mathf.Cos(-1.5f)));
-        const float numPoints = 6;
+        const float numPoints = 8;
         Vector3 globalA = new Vector3();
         Vector3 globalB = new Vector3();
         for (int i = 1; i < numPoints; i++) {
@@ -104,7 +103,7 @@ public class BossController : MonoBehaviour
     {
         for (int i = 0; i < objectives.Count; i++)
         {
-            RaycastHit? hit = FindClosestPoint(restPosition[i], 2.5f);
+            RaycastHit? hit = FindClosestPoint(restPosition[i], 4f);
             if (hit != null)
             {
                 Debug.Log("found");
