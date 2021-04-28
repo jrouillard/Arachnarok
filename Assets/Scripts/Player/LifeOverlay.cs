@@ -27,7 +27,6 @@ public class LifeOverlay : MonoBehaviour
             float f = Mathf.Clamp(t - (sine * 0.7f), 0, 1);
             imageColor.a = f;
             image.color = imageColor;
-            Debug.Log(f);
             yield return null;
         }
     }

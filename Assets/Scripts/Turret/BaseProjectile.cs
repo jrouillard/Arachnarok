@@ -3,19 +3,21 @@ using System.Collections;
 
 public abstract class BaseProjectile : MonoBehaviour {
     public GameObject explosionPrefab;
-    private Collider ignore;
+    private GameObject ignore;
     public int explosionForce;
     public int Damage {get; set;}
     public int explosionRadius;
 
     public Transform Target { get; set; }
 
-    public void SetIgnore(Collider ignore) 
+    public void SetIgnore(GameObject ignore) 
     {
         this.ignore = ignore;
     }
     protected void Explode(Vector3 position, Quaternion rotation)
     {
+        Destroy(GetComponent<Rigidbody>());
+        GetComponent<SphereCollider>().enabled = false;
         if (explosionPrefab)
         {
             GameObject explosion = Instantiate(explosionPrefab, position, rotation);

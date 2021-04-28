@@ -255,7 +255,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (jump && canJump)
         {
-            //gameObject.SendMessage("OnJump");
             Jump();
         }
         else
@@ -287,7 +286,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!hook.hooked && jump)
         {
-            //gameObject.SendMessage("OnDoubleJump");
             DoubleJump(wishDir);
         }
 
@@ -358,7 +356,10 @@ public class PlayerMovement : MonoBehaviour
             EnterFlying();
         }
     }
-
+    public void ResetDoubleJump()
+    {
+        canDJump = true;
+    }
     void Jump()
     {
         if (mode == Mode.Walking && canJump)

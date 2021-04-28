@@ -120,7 +120,7 @@ public class ProjectileGun : MonoBehaviour
         BaseProjectile baseProjectile = currentBullet.GetComponent<BaseProjectile>();
         if (baseProjectile != null)
         {
-            baseProjectile.SetIgnore(player.GetComponent<Collider>());
+            baseProjectile.SetIgnore(player);
         }
         //Rotate bullet to shoot direction
         currentBullet.transform.forward = directionWithSpread.normalized;
