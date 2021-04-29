@@ -8,7 +8,7 @@ public class UnityEventVector3: UnityEvent<Vector3> {}
 
 public class ExplosionTrigger : MonoBehaviour
 {
-    public ParticleSystem explosion;
+    public GameObject explosionPrefab;
     public CameraShake cameraShake;
     public Transform player;
 
@@ -19,9 +19,9 @@ public class ExplosionTrigger : MonoBehaviour
     {
         float distance = Vector3.Distance(player.position, position);
         distance = Mathf.Min(distance, maxDistance);
-        ParticleSystem.EmitParams emitParams = new ParticleSystem.EmitParams();
-        emitParams.position = position;
-        explosion.Emit(emitParams, 1);
+
+        GameObject explosion = Instantiate(explosionPrefab, position, Quaternion.Euler(Vector3.up));
+        Object.Destroy(explosion, 3f);
         StartCoroutine(cameraShake.Shake(.5f, (1 - (distance / maxDistance)) * maxShake));
     }
 }
