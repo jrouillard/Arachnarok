@@ -9622,6 +9622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7523032793072098948}
+  - component: {fileID: 1723886793969916600}
   m_Layer: 0
   m_Name: Impact
   m_TagString: Untagged
@@ -9644,3 +9645,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1723886793969916600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8094330740882892849}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be65bdfbdc1f7124fb51740571499876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 2
+  explosionForce: 0
+  lifetime: 0.1
+  damage: 1
