@@ -8,7 +8,7 @@ public class DamageReceivedEvent: UnityEvent<float> {}
 
 public class DamageableEntity : MonoBehaviour
 {
-    public int lifePoints = 2;
+    public float lifePoints = 2;
     public GameObject explosionAsset;
     public BlinkColor colorBlinker;
     public SceneFader sceneFader;
@@ -19,14 +19,23 @@ public class DamageableEntity : MonoBehaviour
     public ActionableEvent onDeath;
     public DamageReceivedEvent onDamageReceived;
     public float maxLife;
-    public bool invincible;
+    public bool invincible = false;
+    public bool regenerate = false;
 
     private void Start()
     {
         maxLife = lifePoints;
     }
 
-    public void InflictDamages(int damages)
+    private void Update()
+    {
+        if (regenerate && lifePoints < maxLife)
+        {
+            lifePoints += Time.deltaTime;
+        }
+    }
+
+    public void InflictDamages(float damages)
     {
         if (!invincible)
         {
