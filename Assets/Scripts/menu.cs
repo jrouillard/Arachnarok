@@ -23,6 +23,7 @@ public class menu : MonoBehaviour
     private void Start() 
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor. visible = true;
         mainButtons.SetActive(false); 
         options.SetActive(false); 
         slider.value = AudioListener.volume;
