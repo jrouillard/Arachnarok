@@ -166,7 +166,7 @@ public class Level : MonoBehaviour
         audioSourceCounter.pitch = 1;
         ShowText("Congrats!");
         yield return new WaitForSeconds(3);
-        ShowText("To destroy the big mechas, aim for their hearth");
+        ShowText("To destroy the big mechas, aim for their heart");
         yield return new WaitForSeconds(3);
         ShowText("Floor is lava in 3");
         audioSourceCounter.Play();
@@ -177,9 +177,12 @@ public class Level : MonoBehaviour
         ShowText("Floor is lava in 1");
         audioSourceCounter.Play();
         yield return new WaitForSeconds(1);
-        HideText();
         audioSourceCounter.pitch = 2;
         audioSourceCounter.Play();
+        yield return new WaitForSeconds(1);
+        ShowText("(just kidding)");
+        yield return new WaitForSeconds(1);
+        HideText();
         SpawnSimple();
         // RenderSettings.skybox=skyred;
         MechSettings mediumMechPrefabSettings = mediumMechPrefab.GetComponent<MechSettings>();
@@ -187,6 +190,8 @@ public class Level : MonoBehaviour
         {
             GameObject mech = Instantiate(mediumMechPrefab, spawn.position + mediumMechPrefabSettings.offset, Quaternion.identity);
             mediumMechs.Add(mech);
+            MechSettings settings = mech.GetComponent<MechSettings>();
+            settings.SetTarget(player.transform);
         }
         currentPhase = 2;
         running = true;

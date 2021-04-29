@@ -8042,7 +8042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1302887620818836067, guid: 5d2cae124b688344aa8283b0ecfb9d04, type: 3}
       propertyPath: lifePoints
-      value: 500
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 1302887620818836067, guid: 5d2cae124b688344aa8283b0ecfb9d04, type: 3}
       propertyPath: sceneFader
@@ -8128,6 +8128,10 @@ PrefabInstance:
       propertyPath: shootForce
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 2817039751576291485, guid: 5d2cae124b688344aa8283b0ecfb9d04, type: 3}
+      propertyPath: magazineSize
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 6269059041032399913, guid: 5d2cae124b688344aa8283b0ecfb9d04, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.000008931383
@@ -8162,7 +8166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7027286712838874229, guid: 5d2cae124b688344aa8283b0ecfb9d04, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7027286712838874231, guid: 5d2cae124b688344aa8283b0ecfb9d04, type: 3}
       propertyPath: m_UiScaleMode
@@ -9317,7 +9321,7 @@ MonoBehaviour:
   targetPrefab: {fileID: 7574210391670025962, guid: 57b5877e839aa1f4bae8f6d006fa9ec9, type: 3}
   CanvasTarget: {fileID: 670049129}
   tutoTarget: {fileID: 460155325}
-  currentPhase: 0
+  currentPhase: 2
   mechPrefabs:
   - {fileID: 5883511276100784292, guid: 4d73578df0b54cb4ebd306812cfc21ba, type: 3}
   - {fileID: 2479682780768013034, guid: ffd4f8792c3dcdb4bb4cd9e0c4a7ad3e, type: 3}
