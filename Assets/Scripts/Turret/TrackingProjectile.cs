@@ -29,5 +29,6 @@ public class TrackingProjectile : BaseProjectile {
         GetComponent<SphereCollider>().enabled = false;
         smokeTrail.Stop();
         Object.Destroy(gameObject, 2);
+        GetComponent<AudioSource>().enabled = false;
     }
 }
