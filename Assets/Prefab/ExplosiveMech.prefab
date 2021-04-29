@@ -182,6 +182,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   maxLife: 0
+  invincible: 0
 --- !u!114 &6576867121229938498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,7 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeCheckers: []
   spiderAi: {fileID: 5870329163503538375}
-  offset: {x: 0, y: 1.8, z: 0}
+  offset: {x: 0, y: 1.5, z: 0}
   damaged: {fileID: 9117260450573224525}
 --- !u!1 &8914650874852474909
 GameObject:

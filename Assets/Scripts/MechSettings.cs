@@ -7,15 +7,19 @@ public class MechSettings : MonoBehaviour
     // Start is called before the first frame update
     public SingleTargetRangeChecker[] rangeCheckers;
     public SpiderAI spiderAi;
+    public BossAI bossAi;
     public Vector3 offset;
 
     public DamageableEntity damaged;
     
     public void Awake()
     {
-        if (!spiderAi.target)
+        if (spiderAi)
         {
-            spiderAi.enabled = false;
+            if (!spiderAi.target)
+            {
+                spiderAi.enabled = false;
+            }
         }
         foreach(SingleTargetRangeChecker rangeChecker in rangeCheckers) 
         {
@@ -26,14 +30,17 @@ public class MechSettings : MonoBehaviour
         }
     }
     public void SetTarget(Transform target)
-    {
-        foreach(SingleTargetRangeChecker rangeChecker in rangeCheckers) 
+    {        
+        if (spiderAi)
         {
-            rangeChecker.target = target;
-            rangeChecker.enabled = true;
+            foreach(SingleTargetRangeChecker rangeChecker in rangeCheckers) 
+            {
+                rangeChecker.target = target;
+                rangeChecker.enabled = true;
+            }
+            spiderAi.target = target;
+            spiderAi.enabled = true;
         }
-        spiderAi.target = target;
-        spiderAi.enabled = true;
     }    
     public void Clean()
     {
@@ -42,6 +49,10 @@ public class MechSettings : MonoBehaviour
 
     public bool IsAlive()
     {
+        if (!damaged)
+        {
+            return false;
+        }
         return damaged.IsAlive();
     }
 

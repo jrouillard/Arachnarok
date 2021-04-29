@@ -106,7 +106,6 @@ public class BossController : MonoBehaviour
             RaycastHit? hit = FindClosestPoint(restPosition[i], 4f);
             if (hit != null)
             {
-                Debug.Log("found");
                 Vector3 position = hit?.point ?? new Vector3();
                 objectives[i].position = position;
             }

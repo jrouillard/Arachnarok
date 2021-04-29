@@ -10,7 +10,7 @@ public class WarmupLaser : BaseProjectile {
     void OnDestroy()
     {
         GameObject bullet = Instantiate(laserBeam, transform.position, Quaternion.Euler(transform.forward)) as GameObject;
-        if (bullet != null)
+        if (bullet != null && transform.parent)
         {
             bullet.transform.forward = transform.forward;
             BaseProjectile baseProjectile = bullet.GetComponent<BaseProjectile>();

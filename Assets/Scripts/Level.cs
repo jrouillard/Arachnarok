@@ -9,29 +9,31 @@ public class Level : MonoBehaviour
     public AudioSource audioSource;
     public AudioSource audioSourceCounter;
     public MissionWaypoint missionWayPoint;
-
+    public Material skyred;
     public GameObject targetPrefab;
     public Canvas CanvasTarget;
     public Transform tutoTarget;
     // Start is called before the first frame update
-    int currentPhase = 0;
+    public int currentPhase = 0;
 
 
     public GameObject[] mechPrefabs;
     public Text infos;
-    public GameObject bigMechPrefab;
+    public GameObject mediumMechPrefab;
     public Transform[] spawns;
     public Transform[] mediumSpawns;
+    public Transform bossSpawn;
 
-    public GameObject boss;
+    public GameObject bossPrefab;
+    public GameObject mechboss;
 
     public List<GameObject> aliveMechs = new List<GameObject>();
-    private List<GameObject> bigMechs = new List<GameObject>();
+    public List<GameObject> mediumMechs = new List<GameObject>();
 
     bool running = true;
     void Start()
     {
-        GoToPhase(0);
+        GoToPhase(currentPhase);
     }
 
     int counter = 0;
@@ -78,7 +80,6 @@ public class Level : MonoBehaviour
 
     IEnumerator TutoCoroutine()
     {
-        
         ShowText("Welcome to Arachnarok !");
         yield return new WaitForSeconds(5);
         ShowText("You have to protect the city");
@@ -180,10 +181,12 @@ public class Level : MonoBehaviour
         audioSourceCounter.pitch = 2;
         audioSourceCounter.Play();
         SpawnSimple();
+        // RenderSettings.skybox=skyred;
+        MechSettings mediumMechPrefabSettings = mediumMechPrefab.GetComponent<MechSettings>();
         foreach (Transform spawn in mediumSpawns)
         {
-            GameObject mech = Instantiate(bigMechPrefab, spawn.position, Quaternion.identity);
-            bigMechs.Add(mech);
+            GameObject mech = Instantiate(mediumMechPrefab, spawn.position + mediumMechPrefabSettings.offset, Quaternion.identity);
+            mediumMechs.Add(mech);
         }
         currentPhase = 2;
         running = true;
@@ -199,13 +202,13 @@ public class Level : MonoBehaviour
         audioSourceCounter.pitch = 1;
         ShowText("Now for the real challenge!");
         yield return new WaitForSeconds(3);
-        ShowText("Big boss in 3");
+        ShowText("Broodmother in 3");
         audioSourceCounter.Play();
         yield return new WaitForSeconds(1);
-        ShowText("Big boss in 2");
+        ShowText("Broodmother in 2");
         audioSourceCounter.Play();
         yield return new WaitForSeconds(1);
-        ShowText("Big boss in 1");
+        ShowText("Broodmother in 1");
         audioSourceCounter.Play();
         yield return new WaitForSeconds(1);
         HideText();
@@ -213,11 +216,7 @@ public class Level : MonoBehaviour
         audioSourceCounter.Play();
 
         SpawnSimple();
-        foreach (Transform spawn in mediumSpawns)
-        {
-            GameObject mech = Instantiate(bigMechPrefab, spawn.position, Quaternion.identity);
-            bigMechs.Add(mech);
-        }
+        mechboss = Instantiate(bossPrefab, bossSpawn.position, Quaternion.identity);
         currentPhase = 3;
         running = true;
     }
@@ -227,6 +226,12 @@ public class Level : MonoBehaviour
             if (!aliveMechs[n] || !aliveMechs[n].GetComponent<MechSettings>().IsAlive())
             {
                 aliveMechs.RemoveAt(n);
+            }
+        }
+        for (int n = mediumMechs.Count - 1; n >= 0 ; n--) {
+            if (!mediumMechs[n] || !mediumMechs[n].GetComponent<MechSettings>().IsAlive())
+            {
+                mediumMechs.RemoveAt(n);
             }
         }
     }
@@ -251,13 +256,13 @@ public class Level : MonoBehaviour
                     }
                     break;
                 case 2:            
-                    if (aliveMechs.Count <= 3 && bigMechs.Count == 0)
+                    if (aliveMechs.Count <= 3 && mediumMechs.Count == 0)
                     {
                         GoToPhase(3);
                     }
                     break;
                 case 3:    
-                    if (boss == null)
+                    if (!mechboss.GetComponent<BossLife>().IsAlive())
                     {
                         Win();
                     }
@@ -271,6 +276,19 @@ public class Level : MonoBehaviour
 
     public void Win()
     {
-        
+        running = false;
+        StartCoroutine(WinCoroutine());
+    }
+    
+    IEnumerator WinCoroutine()
+    {    
+        audioSourceCounter.pitch = 1;
+        ShowText("The city is saved");
+        yield return new WaitForSeconds(3);
+        ShowText("yay");
+        yield return new WaitForSeconds(1);
+        ShowText("You can now leave");
+        yield return new WaitForSeconds(3);
+        HideText();
     }
 }

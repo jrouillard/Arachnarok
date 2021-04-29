@@ -47,6 +47,7 @@ public class DamageableEntity : MonoBehaviour
 
     public void Kill()
     {
+        lifePoints = 0;
         onDeath.Invoke(gameObject);
         StopBlink();
         PlayExplosion();
