@@ -31,13 +31,13 @@ public class MechSettings : MonoBehaviour
     }
     public void SetTarget(Transform target)
     {        
+        foreach(SingleTargetRangeChecker rangeChecker in rangeCheckers) 
+        {
+            rangeChecker.target = target;
+            rangeChecker.enabled = true;
+        }
         if (spiderAi)
         {
-            foreach(SingleTargetRangeChecker rangeChecker in rangeCheckers) 
-            {
-                rangeChecker.target = target;
-                rangeChecker.enabled = true;
-            }
             spiderAi.target = target;
             spiderAi.enabled = true;
         }

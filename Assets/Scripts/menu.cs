@@ -20,7 +20,10 @@ public class menu : MonoBehaviour
     public Slider slider;
     private MenusType type = MenusType.Main;
     
-    private void Start() {
+    private void Start() 
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor. visible = true;
         mainButtons.SetActive(false); 
         options.SetActive(false); 
         slider.value = AudioListener.volume;

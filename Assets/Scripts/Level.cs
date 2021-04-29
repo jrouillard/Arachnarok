@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Level : MonoBehaviour
@@ -90,7 +91,7 @@ public class Level : MonoBehaviour
         yield return new WaitForSeconds(3);
         ShowText("If you press space while grappling, you can move towards the hook, and swing faster");
         yield return new WaitForSeconds(3);
-        ShowText("Also you can double jump and wallrun a bit");
+        ShowText("Also you do not take fall damage");
         
         yield return new WaitForSeconds(3);
         ShowText("Go to the top of this skyscrapper to start");
@@ -166,7 +167,7 @@ public class Level : MonoBehaviour
         audioSourceCounter.pitch = 1;
         ShowText("Congrats!");
         yield return new WaitForSeconds(3);
-        ShowText("To destroy the big mechas, aim for their hearth");
+        ShowText("To destroy the big mechas, aim for their heart");
         yield return new WaitForSeconds(3);
         ShowText("Floor is lava in 3");
         audioSourceCounter.Play();
@@ -177,9 +178,12 @@ public class Level : MonoBehaviour
         ShowText("Floor is lava in 1");
         audioSourceCounter.Play();
         yield return new WaitForSeconds(1);
-        HideText();
         audioSourceCounter.pitch = 2;
         audioSourceCounter.Play();
+        yield return new WaitForSeconds(1);
+        ShowText("(just kidding)");
+        yield return new WaitForSeconds(1);
+        HideText();
         SpawnSimple();
         // RenderSettings.skybox=skyred;
         MechSettings mediumMechPrefabSettings = mediumMechPrefab.GetComponent<MechSettings>();
@@ -187,6 +191,8 @@ public class Level : MonoBehaviour
         {
             GameObject mech = Instantiate(mediumMechPrefab, spawn.position + mediumMechPrefabSettings.offset, Quaternion.identity);
             mediumMechs.Add(mech);
+            MechSettings settings = mech.GetComponent<MechSettings>();
+            settings.SetTarget(player.transform);
         }
         currentPhase = 2;
         running = true;
@@ -200,7 +206,7 @@ public class Level : MonoBehaviour
     IEnumerator BossCoroutine()
     {    
         audioSourceCounter.pitch = 1;
-        ShowText("Now for the real challenge!");
+        ShowText("Now for the big finale!");
         yield return new WaitForSeconds(3);
         ShowText("Broodmother in 3");
         audioSourceCounter.Play();
@@ -217,6 +223,8 @@ public class Level : MonoBehaviour
 
         SpawnSimple();
         mechboss = Instantiate(bossPrefab, bossSpawn.position, Quaternion.identity);
+        MechSettings settings = mechboss.GetComponent<MechSettings>();
+        settings.SetTarget(player.transform);
         currentPhase = 3;
         running = true;
     }
@@ -237,6 +245,9 @@ public class Level : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKey("escape"))
+            SceneManager.LoadScene("menu");
+
         if (running) 
         {
             CheckAliveMech();
@@ -262,7 +273,7 @@ public class Level : MonoBehaviour
                     }
                     break;
                 case 3:    
-                    if (!mechboss.GetComponent<BossLife>().IsAlive())
+                    if (!mechboss.GetComponent<MechSettings>().IsAlive())
                     {
                         Win();
                     }
