@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c345e754b9a2af14ca2d3e1a920139f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePoints: 40
+  lifePoints: 25
   explosionAsset: {fileID: 5704820035983880959, guid: da5e9f652c3fa854ab04b9ede1b54d9b, type: 3}
   colorBlinker: {fileID: 1312624814544298116}
   sceneFader: {fileID: 0}
@@ -586,6 +586,7 @@ MonoBehaviour:
       m_Calls: []
   maxLife: 0
   invincible: 0
+  regenerate: 0
 --- !u!1 &1700580300332767757
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c345e754b9a2af14ca2d3e1a920139f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePoints: 40
+  lifePoints: 25
   explosionAsset: {fileID: 5704820035983880959, guid: da5e9f652c3fa854ab04b9ede1b54d9b, type: 3}
   colorBlinker: {fileID: 5818027367068160489}
   sceneFader: {fileID: 0}
@@ -747,6 +748,7 @@ MonoBehaviour:
       m_Calls: []
   maxLife: 0
   invincible: 0
+  regenerate: 0
 --- !u!114 &5818027367068160489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1039,6 +1041,7 @@ MonoBehaviour:
       m_Calls: []
   maxLife: 0
   invincible: 1
+  regenerate: 0
 --- !u!1 &3213410502420573022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,7 +1668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c345e754b9a2af14ca2d3e1a920139f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePoints: 40
+  lifePoints: 25
   explosionAsset: {fileID: 5704820035983880959, guid: da5e9f652c3fa854ab04b9ede1b54d9b, type: 3}
   colorBlinker: {fileID: 7720658919749885016}
   sceneFader: {fileID: 0}
@@ -1679,6 +1682,7 @@ MonoBehaviour:
       m_Calls: []
   maxLife: 0
   invincible: 0
+  regenerate: 0
 --- !u!114 &7720658919749885016
 MonoBehaviour:
   m_ObjectHideFlags: 0
